@@ -26,7 +26,12 @@ public class Book extends BaseEntity {
     private List<BookCategory> bookCategories = new ArrayList<>();
 
     @Builder
-    public Book(String bookName) {
+    public Book(Long bookId, String bookName) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+    }
+
+    public void update(String bookName) {
         this.bookName = bookName;
     }
 }

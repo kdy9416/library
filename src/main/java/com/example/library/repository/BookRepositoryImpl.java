@@ -33,6 +33,7 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
     public List<BookReponseDto> search(BookSearchDto bookSearchDto) {
         return queryFactory
                 .select(new QBookDto_BookReponseDto(
+                        book.bookId,
                         book.bookName
                 ))
                 .from(book)
@@ -45,10 +46,9 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
     @Override
     public Page<BookReponseDto> searchPageSimple(BookSearchDto bookSearchDto, Pageable pageable) {
 
-
-
         QueryResults<BookReponseDto> results = queryFactory
                 .select(new QBookDto_BookReponseDto(
+                        book.bookId,
                         book.bookName
                 ))
                 .from(book)
@@ -63,7 +63,6 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
         long total = results.getTotal();
 
         return new PageImpl<>(content, pageable, total);
-
     }
 
 

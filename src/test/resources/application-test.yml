@@ -1,0 +1,19 @@
+spring:
+  config:
+      activate:
+        # test profile 설정
+        on-profile: test
+
+  datasource:
+      # h2 기반 datasource 설정 (mysql을 사용하는 경우)
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:test;MODE=MYSQL
+      username: sa
+      password:
+
+  jpa:
+      hibernate:
+        # entity 기반 table 자동 생성을 위한 ddl-auto 설정
+        ddl-auto: create-drop
+      # database dialect 설정
+      database-platform: org.hibernate.dialect.H2Dialect
